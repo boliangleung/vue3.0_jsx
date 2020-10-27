@@ -1,0 +1,49 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  tags:
+    - fec
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - output/
+      - gitlog
+      - package.json
+      - dragont.config.js
+  script:
+    - yarn
+    - yarn build
+  after_script:
+    - git log -1 --pretty=medium >> gitlog
+  only:
+    - /^(master|test)$/
+
+.deploy_template: &deploy_definition
+  stage: deploy
+  tags:
+    - fec
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - npm i @yy/xh-git-push
+  script:
+    - node ./node_modules/@yy/xh-git-push/index.js
+
+deploy_test:
+  <<: *deploy_definition
+  environment:
+    name: test
+  only:
+    - test
+
+deploy_prod:
+  <<: *deploy_definition
+  environment:
+    name: master
+  when: manual
+  allow_failure: false
+  only:
+    - master
