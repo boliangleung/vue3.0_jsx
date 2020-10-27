@@ -14,8 +14,9 @@ build:
       - package.json
       - dragont.config.js
   script:
-    - yarn
-    - yarn build
+    # - yarn
+    # - yarn build
+    - ls
   after_script:
     - git log -1 --pretty=medium >> gitlog
   only:
