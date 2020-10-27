@@ -1,5 +1,4 @@
 import request from '@yy/xh-request'
-import { isIos, isAndroid, getCookie } from '@yy/xh-tools'
 
 const actId = 'xxxx'
 
