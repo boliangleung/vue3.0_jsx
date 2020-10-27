@@ -1,0 +1,83 @@
+@import 'mixin/flex';
+@import 'mixin/thinBorder';
+
+// 基础样式
+@mixin border() {
+  border: 1px solid red;
+}
+@mixin limit($line: 1) {
+  @if $line > 1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+  } @else {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  line-height: 1.3;
+}
+
+@mixin lh($num) {
+  height: $num;
+  line-height: $num;
+}
+
+@mixin wh($num) {
+  width: $num;
+  height: $num;
+}
+
+@mixin background($url, $w: false, $h: false) {
+  background: url($url) no-repeat center / 100% 100%;
+  @if $w {
+    width: $w;
+  }
+  @if $h {
+    height: $h;
+  }
+}
+
+@mixin small-font($size) {
+  font-size: 24px;
+  transform: scale($size / 24px);
+}
+
+// 布局
+@mixin xy-center() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin x-center() {
+  position: absolute;
+  // left: 0;
+  // right: 0;
+  // margin-left: auto;
+  // margin-right: auto;
+
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+@mixin y-center() {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+@mixin full-page() {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin fixed-bottom() {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
