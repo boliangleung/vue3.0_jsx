@@ -1,38 +1,3 @@
-<template>
-  <div class="c-modal" :class="{ active: modelValue }" @touchmove.stop.prevent>
-    <div class="c-modal-container">
-      <div class="c-modal-close" @click="handleClose()"></div>
-      <div class="c-modal-content">
-        <slot></slot>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-import { defineComponent } from 'vue'
-export default defineComponent({
-  components: {
-  },
-  props: {
-    modelValue: {
-      type: Boolean,
-      required: true
-    }
-  },
-  setup (_, { emit }) {
-    const handleClose = () => {
-      emit('update:modelValue', false)
-    }
-
-    return {
-      handleClose
-    }
-  }
-})
-</script>
-
-<style lang="scss" scoped>
 .c-modal {
   position: fixed;
   width: 100%;
@@ -75,4 +40,3 @@ export default defineComponent({
     }
   }
 }
-</style>

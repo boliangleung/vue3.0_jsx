@@ -1,23 +1,11 @@
-<template>
-  <van-list
-    class="c-loading-list"
-    v-model="pageInfo.loading"
-    :finished="pageInfo.finished"
-    :finished-text="list.length ? '没有更多了' : emptyText"
-    @load="getList"
-  >
-    <slot :list="list"></slot>
-  </van-list>
-</template>
 
-<script>
 import { defineComponent, reactive, toRefs } from 'vue'
 import { List } from 'vant'
 
 export default defineComponent({
-  components: {
-    'van-list': List
-  },
+  // components: {
+  //   'van-list': List
+  // },
   props: {
     load: {
       type: Function,
@@ -32,9 +20,9 @@ export default defineComponent({
     }
   },
 
-  setup () {
+  setup (props, { slots }) {
     const state = reactive({
-      list: [],
+      list: [] as object[],
       pageInfo: {
         page: 0,
         size: 20,
@@ -47,9 +35,10 @@ export default defineComponent({
       state.pageInfo.loading = true
       const { page, size } = state.pageInfo
       try {
-        const list = await state.load({ page, size })
+        const list = await props.load({ page, size })
+        console.log(1111, list)
         // 处理结果
-        state.handleList && state.handleList(list)
+        props.handleList && props.handleList(list)
         // console.log(list)
         state.list = [...state.list, ...list]
         if (list.length < size) {
@@ -64,15 +53,16 @@ export default defineComponent({
       state.pageInfo.loading = false
     }
 
-    return {
-      ...toRefs(state),
-      getList
-    }
+    return () => (
+      <List
+        class="c-loading-list"
+        v-model={[state.pageInfo.loading, 'modelValue']}
+        finished={state.pageInfo.finished}
+        finished-text={state.list.length ? '没有更多了' : props.emptyText}
+        onLoad={getList}
+      >
+        {slots.default?.({ list: state.list })}
+      </List>
+    )
   }
 })
-</script>
-
-<style lang="scss" scoped>
-.c-loading-list {
-}
-</style>
