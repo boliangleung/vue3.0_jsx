@@ -1,8 +1,5 @@
-<template>
-  <div class="page-other">Other</div>
-</template>
 
-<script>
+import './index.scss'
 import {
   defineComponent,
   ref,
@@ -16,11 +13,9 @@ import {
 } from 'vue'
 
 export default defineComponent({
-
+  setup () {
+    return () => (
+      <div class="page-other">Other</div>
+    )
+  }
 })
-</script>
-
-<style lang="scss">
-.page-other {
-}
-</style>

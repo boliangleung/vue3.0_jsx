@@ -5,7 +5,7 @@ import { asyncLogin } from '@yy/kxd-login'
 import { initRem, initConsole, initHiido, initRaven, initMonitor, installFilters } from '@yy/xh-tools'
 import '@yy/xh-skin'
 import installComponents from './components/install'
-import App from './App.vue'
+import App from './App'
 import router from './router/index'
 import './css/index.scss'
 
@@ -25,7 +25,6 @@ const init = async function () {
   }
 
   const app = createApp({
-    el: '#app',
     mounted () {
       window.reportMonitor && window.reportMonitor({ function_id: 'show' })
     },
