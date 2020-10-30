@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@yy/kxd-login": "^0.2.43",
-    "@yy/xh-request": "^0.0.54",
+    "@yy/xh-request": "^0.0.55",
     "@yy/xh-skin": "^0.0.17",
     "@yy/xh-toast": "^0.0.21",
     "@yy/xh-tools": "^1.0.16",
