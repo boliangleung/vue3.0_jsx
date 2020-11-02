@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import LoadingList from '@/components/LoadingList/index.tsx'
 
 export default defineComponent({
+  name: 'loading-list-example',
   setup () {
     // 模拟一个请求方法
     const load = () => {

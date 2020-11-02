@@ -16,6 +16,7 @@ import ExampleLoadingList from './components/ExampleLoadingList/index'
 import { getActConfig } from '@/api'
 
 export default defineComponent({
+  name: 'page-home',
   components: {
     HelloWorld,
     ExampleModal

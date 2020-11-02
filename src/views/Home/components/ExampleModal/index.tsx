@@ -17,6 +17,7 @@ export interface Message {
 }
 
 export default defineComponent({
+  name: 'modal-example',
   setup () {
     const state = reactive({
       visiable: false,
