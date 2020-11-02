@@ -1,26 +1,26 @@
 stages:
-  # - build
+  - build
   - deploy
 
-# build:
-#   stage: build
-#   tags:
-#     - fec
-#   artifacts:
-#     expire_in: 1 week
-#     paths:
-#       - output/
-#       - gitlog
-#       - package.json
-#       - dragont.config.js
-#   script:
-#     # - yarn
-#     # - yarn build
-#     - ls
-#   after_script:
-#     - git log -1 --pretty=medium >> gitlog
-#   only:
-#     - /^(master|test)$/
+build:
+  stage: build
+  tags:
+    - fec
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - output/
+      - gitlog
+      - package.json
+      - dragont.config.js
+  script:
+    # - yarn
+    # - yarn build
+    - ls
+  after_script:
+    - git log -1 --pretty=medium >> gitlog
+  only:
+    - /^(master|test)$/
 
 .deploy_template: &deploy_definition
   stage: deploy
