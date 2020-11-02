@@ -1739,10 +1739,10 @@
   resolved "https://npm-registry.yy.com/@yy/kxd-login/download/@yy/kxd-login-0.2.43.tgz#6eb1f822e7fb4e9583fde36bfd6a1cdc2daf4bac"
   integrity sha1-brH4Iuf7TpWD/eNr/Woc3C2vS6w=
 
-"@yy/xh-request@^0.0.54":
-  version "0.0.54"
-  resolved "https://npm-registry.yy.com/@yy/xh-request/download/@yy/xh-request-0.0.54.tgz#996b4789200f4786c1e3a0c2432647a194acb170"
-  integrity sha1-mWtHiSAPR4bB46DCQyZHoZSssXA=
+"@yy/xh-request@^0.0.55":
+  version "0.0.55"
+  resolved "https://npm-registry.yy.com/@yy/xh-request/download/@yy/xh-request-0.0.55.tgz#c5ca9573086263f68006bd1d6833135033c10994"
+  integrity sha1-xcqVcwhiY/aABr0daDMTUDPBCZQ=
   dependencies:
     "@yy/xh-toast" "^0.0.21"
     "@yy/xh-tools" "^1.0.16"
