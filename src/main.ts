@@ -1,7 +1,7 @@
 import { createApp, h } from 'vue'
 import mitt from 'mitt'
-import { showToast } from '@yy/xh-toast'
 import { asyncLogin } from '@yy/kxd-login'
+import { Toast } from '@yy/xh-components'
 import { initRem, initConsole, initHiido, initRaven, initMonitor, installFilters } from '@yy/xh-tools'
 import '@yy/xh-skin'
 import installComponents from './components/install'
@@ -10,7 +10,7 @@ import router from './router/index'
 import './css/index.scss'
 
 window.$bus = mitt()
-window.$toast = showToast
+window.$toast = Toast
 
 const init = async function () {
   initRem()

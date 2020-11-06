@@ -1739,6 +1739,16 @@
   resolved "https://npm-registry.yy.com/@yy/kxd-login/download/@yy/kxd-login-0.2.43.tgz#6eb1f822e7fb4e9583fde36bfd6a1cdc2daf4bac"
   integrity sha1-brH4Iuf7TpWD/eNr/Woc3C2vS6w=
 
+"@yy/xh-components@^0.0.2":
+  version "0.0.2"
+  resolved "https://npm-registry.yy.com/@yy/xh-components/download/@yy/xh-components-0.0.2.tgz#6f087b839aad7a15de43b3a9ee38ff313c1fed8c"
+  integrity sha1-bwh7g5qtehXeQ7Op7jj/MTwf7Yw=
+  dependencies:
+    "@babel/runtime" "7.x"
+    "@vant/icons" "1.3.2"
+    "@vant/use" "^0.0.9"
+    vue-lazyload "1.2.3"
+
 "@yy/xh-request@^0.0.55":
   version "0.0.55"
   resolved "https://npm-registry.yy.com/@yy/xh-request/download/@yy/xh-request-0.0.55.tgz#c5ca9573086263f68006bd1d6833135033c10994"
@@ -8486,6 +8496,14 @@ postcss-ordered-values@^4.1.2:
     cssnano-util-get-arguments "^4.0.0"
     postcss "^7.0.0"
     postcss-value-parser "^3.0.0"
+
+postcss-px2rem-exclude@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.npmjs.org/postcss-px2rem-exclude/-/postcss-px2rem-exclude-0.0.6.tgz#470f74fb9f839941264394fbb80bffc9be494628"
+  integrity sha1-Rw90+5+DmUEmQ5T7uAv/yb5JRig=
+  dependencies:
+    postcss "^5.0.0"
+    px2rem "~0.5.0"
 
 postcss-px2rem@^0.3.0:
   version "0.3.0"

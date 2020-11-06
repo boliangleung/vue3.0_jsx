@@ -1,9 +1,10 @@
 const CreateWebpWebpackPlugin = require('create-webp-webpack-plugin')
 const path = require('path')
-const px2rem = require('postcss-px2rem')
+const px2rem = require('postcss-px2rem-exclude')
 const autoprefixer = require('autoprefixer')
 
 const postcss = px2rem({
+  exclude: /node_modules/i,
   remUnit: 100 // 基准大小 baseSize，需要和 ./src/js/lib/flexible.js 中相同
 })
 
@@ -28,7 +29,7 @@ module.exports = {
         plugins: [postcss, autoprefixer]
       },
       sass: {
-        prependData: '@import \'~@/css/utils.scss\';'
+        prependData: "@import '~@/css/utils.scss';"
       }
     }
   },
@@ -39,9 +40,7 @@ module.exports = {
     //   vuex: 'Vuex',
     //   axios: 'axios'
     // },
-    plugins: [
-      isProduction && new CreateWebpWebpackPlugin()
-    ].filter(Boolean)
+    plugins: [isProduction && new CreateWebpWebpackPlugin()].filter(Boolean)
   },
   chainWebpack: config => {
     if (isProduction) {
@@ -58,17 +57,7 @@ module.exports = {
           }
         })
         .end()
-
-      // 设置babel编译目录
-      config.module
-        .rule('js')
-        .test(/\.js$/)
-        .include.add(path.resolve(__dirname, '../../node_modules/@yy'))
-        .add(path.resolve(__dirname, './node_modules/@yy'))
-        .add(path.resolve(__dirname, './src'))
-        .end()
-        .use('babel-loader')
-        .loader('babel-loader')
     }
-  }
+  },
+  transpileDependencies: [/@yy/]
 }

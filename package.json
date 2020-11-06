@@ -1,7 +1,7 @@
 {
   "name": "template",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
@@ -10,16 +10,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn build && git add output"
+      "pre-commit": "git pull && yarn build && git add output"
     }
   },
   "dependencies": {
     "@yy/kxd-login": "^0.2.43",
+    "@yy/xh-components": "^0.0.2",
     "@yy/xh-request": "^0.0.55",
     "@yy/xh-skin": "^0.0.17",
-    "@yy/xh-toast": "^0.0.21",
     "@yy/xh-tools": "^1.0.16",
-    "@yy/xh-wx-guide": "^0.0.8",
     "core-js": "^3.6.5",
     "mitt": "^2.1.0",
     "vant": "^3.0.0-beta.4",
@@ -50,7 +49,7 @@
     "husky": "^4.3.0",
     "image-webpack-loader": "^7.0.1",
     "node-sass": "^4.12.0",
-    "postcss-px2rem": "^0.3.0",
+    "postcss-px2rem-exclude": "^0.0.6",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3"
   }
