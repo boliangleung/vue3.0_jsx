@@ -1,4 +1,3 @@
-
 import './index.scss'
 import {
   defineComponent,
@@ -15,7 +14,9 @@ import {
 export default defineComponent({
   setup () {
     return () => (
-      <div class="page-other">Other</div>
+      <div class="page-other">
+        <div>我爱学习</div>
+      </div>
     )
   }
 })
