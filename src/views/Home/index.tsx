@@ -8,9 +8,12 @@ import {
   watch,
   watchEffect,
   onMounted,
+  onUnmounted,
   onBeforeUnmount,
   PropType
 } from 'vue'
+import { useRouter } from 'vue-router'
+
 import HelloWorld from './components/HelloWorld/index'
 import ExampleModal from './components/ExampleModal/index'
 
@@ -97,18 +100,41 @@ function Repeat (props: any) {
 }
 
 function ListOfTenThings () {
-  // return defineComponent({
-  //   setup (props) {
-  //     console.log(props, 852669)
-  //     return () => <div>999998</div>
-  //   }
-
-  // })
   return (
     <Repeat numTimes={10} >
       {(index: number) => <div key={index} >This is item {index} in the list</div>}
     </Repeat>
   )
+}
+interface HookTest{
+  count: number;
+}
+interface Move{
+  pageX: number;
+  pageY: number;
+}
+function VueHooksFunc (params: HookTest) {
+  const count = ref(params.count)
+  const setCount = () => {
+    console.log(999, count)
+    count.value++
+  }
+  return { count: count, setCount }
+}
+function useMouse () {
+  const x = ref(0)
+  const y = ref(0)
+  const update = (e: Move) => {
+    x.value = e.pageX
+    y.value = e.pageY
+  }
+  onMounted(() => {
+    window.addEventListener('mousemove', update)
+  })
+  onUnmounted(() => {
+    window.removeEventListener('mousemove', update)
+  })
+  return { x, y }
 }
 export default defineComponent({
   name: 'page-home',
@@ -118,17 +144,28 @@ export default defineComponent({
   },
 
   setup () {
+    const { count: count1, setCount } = VueHooksFunc({ count: 10 })
+    const { count: count2, setCount: setCount2 } = VueHooksFunc({ count: 10 })
+    const { x, y } = useMouse()
+    // console.log(setCount1, 8526)
+    // setCount1()
+    // const [a1, b1] = VueHooksFunc({ count: 10 })
     const showModal = () => {
       window.$bus.emit('show-modal-example', { text: 'some text' })
     }
     const book = reactive({ title: 'lbl' })
     const slots = [1, 2, 30].map(item => <div>{item * 2}</div>)
     const count = reactive({ number: 852, name: 'lbl', slots })
+    const router = useRouter()
+    const enterAvatar = () => {
+      console.log(router)
+      router.push('./Avatar')
+    }
     console.log(count)
     return () => (
       <div class="page-home">
-        <h1>Home</h1>
-        <h2>普通组件示例</h2>
+        <h1>Home {count1.value} {count2.value}</h1>
+        <h2>普通组件示例 x:{x.value} y:{y.value}</h2>
         <HelloWorld></HelloWorld>
         <h2>弹窗组件示例</h2>
         <button onClick={showModal}>展示弹窗</button>
@@ -138,9 +175,13 @@ export default defineComponent({
         <NumberDescriber { ...count} ></NumberDescriber>
         <TodoList></TodoList>
         <ListOfTenThings></ListOfTenThings>
+
+        <button onClick={setCount}>testHook</button>
+        <button onClick={setCount2}>testHook2</button>
         {/* <Text.getOrigin></Text.getOrigin> */}
-        <TextFunction></TextFunction>
+        <TextFunction ></TextFunction>
         <ExampleLoadingList></ExampleLoadingList>
+        <button onClick={enterAvatar}>进入Avatar列表</button>
       </div>
     )
   }

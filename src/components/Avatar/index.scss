@@ -1,0 +1,12 @@
+.title{
+  height: 88px;
+  @include flex-center();
+  font-size: 32px;
+  width: 100%;
+  font-weight: bold;
+  border-bottom: 1px solid #f2f2f2;
+  // background: #f2f2f2;
+}
+.qy-avatar{
+  border-radius: 50px;
+}
